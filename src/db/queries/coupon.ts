@@ -22,4 +22,9 @@ const getAllCoupons = (): Coupon[] => {
     return couponsDB;
 };
 
-export default { createCoupon, getCouponByCode, getAllCoupons };
+const getCouponById = (id: string): Coupon | null => {
+    const coupon = couponsDB.find(coupon => coupon.id === id);
+    return coupon || null;
+};
+
+export default { createCoupon, getCouponByCode, getAllCoupons, getCouponById };

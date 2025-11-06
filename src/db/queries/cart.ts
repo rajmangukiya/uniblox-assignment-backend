@@ -1,4 +1,4 @@
-import { cartsDB, ProductWithQuantity } from "../models/cart";
+import { cartsDB, clearCartByUserIdDB, ProductWithQuantity } from "../models/cart";
 import { v4 as uuidv4 } from 'uuid';
 import { Cart } from "../models/cart";
 
@@ -22,4 +22,8 @@ const updateUserCart = (userId: string, cart: Cart) => {
     cartsDB.map(c => c.userId === userId ? cart : c);
 };
 
-export default { createCart, getCartByUserId, updateUserCart };
+const clearCartByUserId = (userId: string) => {
+    clearCartByUserIdDB(userId);
+};
+
+export default { createCart, getCartByUserId, updateUserCart, clearCartByUserId };

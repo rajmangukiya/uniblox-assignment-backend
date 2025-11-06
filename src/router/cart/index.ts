@@ -4,7 +4,8 @@ import auth from "../../middlewares/auth";
 
 const router = express.Router();
 
-router.post("/add-to-cart", auth({ isAdmin: false }), cartController.addToCart);
+router.post("/update-cart", auth({ isAdmin: false }), cartController.updateCart);
+router.post("/clear-cart", auth({ isAdmin: false }), cartController.clearCart);
 router.get("/", auth({ isAdmin: false }), cartController.getCart);
 
 export default router;  

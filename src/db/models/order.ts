@@ -7,6 +7,8 @@ type Order = {
     couponId?: string;
     createdAt: Date;
     updatedAt: Date;
+    totalAmountAfterDiscount: number;
+    discountAmount: number;
 };
 
 const ordersDB: Order[] = [];

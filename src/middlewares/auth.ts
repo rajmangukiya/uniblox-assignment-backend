@@ -16,9 +16,6 @@ const auth = ({ isAdmin }: { isAdmin?: boolean }): RequestHandler => {
 
       const user = userQueries.getUserById(decoded.userId);
 
-      console.log('userQueries', decoded.userId, userQueries.getAllUsers());
-      
-      
       if (!user) throw new Error("User not found");
       if (isAdmin && !user.isAdmin) throw new Error("Unauthorized: User is not an admin");
 

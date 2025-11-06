@@ -12,6 +12,9 @@ type Cart = {
     updatedAt: Date;
 };
 
-const cartsDB: Cart[] = [];
+let cartsDB: Cart[] = [];
 
-export { cartsDB, ProductWithQuantity, Cart };
+const clearCartByUserIdDB = (userId: string) => {
+    cartsDB = cartsDB.filter(c => c.userId !== userId);
+};
+export { cartsDB, ProductWithQuantity, Cart, clearCartByUserIdDB };

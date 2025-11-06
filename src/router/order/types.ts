@@ -2,10 +2,7 @@
 
 export const CreateOrderRequest = z
     .object({
-        products: z.array(z.object({
-            productId: z.string().trim(),
-            quantity: z.number().int().min(1),
-        })),
+        couponCode: z.string().trim().optional(),
     })
     .strict();
 export type CreateOrderRequest = z.infer<typeof CreateOrderRequest>;
