@@ -8,7 +8,8 @@ const createUser = async (req: Request<{}, {}, CreateUserRequest>, res: Response
   try {
     const { name, email, password } = req.body;
 
-    if (userQueries.getUserByEmail(email)) throw new Error("User already exists");
+    // validations
+    if (userQueries.getUserByEmail(email)) return res.status(400).json({ message: "User already exists" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
