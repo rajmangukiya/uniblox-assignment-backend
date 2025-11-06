@@ -5,12 +5,12 @@ import { AddCouponRequest } from "./types";
 const addCoupon = async (req: Request<{}, {}, AddCouponRequest>, res: Response) => {
   try {
     
-    const { code, fixedDiscount, nThValue } = req.body;
+    const { code, percentageDiscount, nThValue } = req.body;
     const existingCoupon = couponQueries.getCouponByCode(code);
     if (existingCoupon) {
       return res.status(400).json({ message: "Coupon already exists" });
     }
-    couponQueries.createCoupon(code, fixedDiscount, nThValue);
+    couponQueries.createCoupon(code, percentageDiscount || 10, nThValue);
     
     return res.status(200).json({ message: "Coupon added successfully" });
   } catch (error) {

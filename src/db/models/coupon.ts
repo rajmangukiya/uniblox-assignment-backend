@@ -1,7 +1,7 @@
 type Coupon = {
     id: string;
     code: string;
-    fixedDiscount: number;
+    percentageDiscount: number;
     nThValue: number;
     createdAt: Date;
     updatedAt: Date;

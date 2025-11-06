@@ -1,11 +1,11 @@
 import { couponsDB, Coupon } from "../models/coupon";
 import { v4 as uuidv4 } from 'uuid';
 
-const createCoupon = (code: string, fixedDiscount: number, nThValue: number) => {
+const createCoupon = (code: string, percentageDiscount: number, nThValue: number) => {
     const coupon: Coupon = {
         id: uuidv4(),
         code,
-        fixedDiscount,
+        percentageDiscount,
         nThValue,
         createdAt: new Date(),
         updatedAt: new Date(),

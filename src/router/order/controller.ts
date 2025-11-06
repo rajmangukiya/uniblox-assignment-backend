@@ -40,11 +40,13 @@ const createOrder = async (req: Request<{}, {}, CreateOrderRequest>, res: Respon
     return acc + product.quantity * productData.price;
   }, 0);
 
+  const discountAmount = totalAmount * (coupon?.percentageDiscount || 0) / 100;
+
   orderQueries.createOrder(
     user.id, 
     cart.products, 
-    totalAmount - (coupon?.fixedDiscount || 0),
-    coupon?.fixedDiscount || 0,
+    totalAmount - discountAmount,
+    discountAmount,
     coupon?.id,
   );
 
